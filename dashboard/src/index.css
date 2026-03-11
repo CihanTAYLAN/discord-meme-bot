@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+:root {
+  color-scheme: dark;
+  font-family:
+    'Instrument Sans',
+    'Manrope',
+    sans-serif;
+  --page-bg:
+    radial-gradient(circle at 12% 18%, rgba(62, 191, 230, 0.18), transparent 24%),
+    radial-gradient(circle at 84% 10%, rgba(255, 207, 120, 0.18), transparent 28%),
+    linear-gradient(180deg, #071018 0%, #0f172a 46%, #151f31 100%);
+  --hero-a: rgba(8, 15, 28, 0.82);
+  --hero-b: rgba(18, 33, 54, 0.92);
+  --card-bg: rgba(11, 18, 32, 0.7);
+  --card-bg-strong: rgba(19, 28, 46, 0.88);
+  --card-border: rgba(148, 163, 184, 0.16);
+  --text-strong: #f8fafc;
+  --text-soft: rgba(226, 232, 240, 0.8);
+  --text-muted: rgba(148, 163, 184, 0.86);
+  --accent: #67e8f9;
+  --accent-strong: #22d3ee;
+  --accent-alt: #fde68a;
+  --danger-soft: rgba(251, 113, 133, 0.12);
+  --danger-border: rgba(251, 113, 133, 0.32);
+  --success-soft: rgba(74, 222, 128, 0.12);
+  --success-border: rgba(74, 222, 128, 0.28);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --page-bg:
+    radial-gradient(circle at 12% 18%, rgba(14, 165, 233, 0.12), transparent 22%),
+    radial-gradient(circle at 84% 10%, rgba(245, 158, 11, 0.14), transparent 28%),
+    linear-gradient(180deg, #f4f7fb 0%, #eef3f9 42%, #e8edf5 100%);
+  --hero-a: rgba(255, 255, 255, 0.88);
+  --hero-b: rgba(237, 244, 255, 0.92);
+  --card-bg: rgba(255, 255, 255, 0.76);
+  --card-bg-strong: rgba(255, 255, 255, 0.92);
+  --card-border: rgba(30, 41, 59, 0.1);
+  --text-strong: #0f172a;
+  --text-soft: rgba(30, 41, 59, 0.76);
+  --text-muted: rgba(51, 65, 85, 0.72);
+  --accent: #0891b2;
+  --accent-strong: #0f766e;
+  --accent-alt: #ca8a04;
+  --danger-soft: rgba(244, 63, 94, 0.08);
+  --danger-border: rgba(244, 63, 94, 0.24);
+  --success-soft: rgba(22, 163, 74, 0.09);
+  --success-border: rgba(22, 163, 74, 0.22);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--page-bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(103, 232, 249, 0.24);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-position: center;
+  background-size: 42px 42px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.78), transparent 92%);
+}
+
+.hero-orb {
+  animation: drift 16s ease-in-out infinite;
+}
+
+.processing-stripes {
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  background-size: 240px 100%;
+  animation: sweep 1.5s linear infinite;
+}
+
+.soft-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.32) transparent;
+}
+
+.soft-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.soft-scroll::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.28);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: content-box;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(18px, -14px, 0) scale(1.06);
+  }
+}
+
+@keyframes sweep {
+  from {
+    background-position: -240px 0;
+  }
+
+  to {
+    background-position: 240px 0;
+  }
+}

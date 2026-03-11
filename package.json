@@ -1,0 +1,27 @@
+{
+  "name": "discord-meme-bot-monorepo",
+  "private": true,
+  "packageManager": "yarn@1.22.22",
+  "workspaces": [
+    "api",
+    "bot",
+    "dashboard"
+  ],
+  "scripts": {
+    "build": "yarn workspace api build && yarn workspace bot build && yarn workspace dashboard build",
+    "dev": "concurrently --kill-others-on-fail -n chroma,api,bot,dashboard -c yellow,blue,green,magenta \"yarn dev:chroma\" \"yarn dev:api\" \"yarn dev:bot\" \"yarn dev:dashboard\"",
+    "dev:api": "yarn workspace api dev",
+    "dev:bot": "yarn workspace bot dev",
+    "dev:chroma": "node ./scripts/dev-chroma.mjs",
+    "dev:dashboard": "yarn workspace dashboard dev",
+    "lint": "yarn workspace api lint && yarn workspace bot lint && yarn workspace dashboard lint",
+    "register:commands": "yarn workspace bot register:commands",
+    "test": "yarn workspace api test && yarn workspace bot test && yarn workspace dashboard test",
+    "typecheck": "yarn workspace api typecheck && yarn workspace bot typecheck && yarn workspace dashboard typecheck"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.4",
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.3"
+  }
+}
